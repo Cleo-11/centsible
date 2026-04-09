@@ -58,8 +58,8 @@ export default function BottomNav() {
   const pathname = usePathname();
 
   return (
-    <nav className="fixed bottom-0 left-0 right-0 z-50 bg-[rgba(15,17,23,0.92)] backdrop-blur-xl border-t border-[rgba(255,255,255,0.06)]">
-      <div className="max-w-md mx-auto flex justify-around py-2.5 pb-7">
+    <nav className="fixed bottom-0 left-1/2 -translate-x-1/2 w-full max-w-md z-50 bg-[rgba(15,17,23,0.92)] backdrop-blur-xl border-t border-[rgba(255,255,255,0.06)]">
+      <div className="flex justify-around py-2.5 pb-7">
         {navItems.map((item) => {
           const isActive = pathname === item.href;
           return (

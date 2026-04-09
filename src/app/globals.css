@@ -136,6 +136,7 @@ body { -ms-overflow-style: none; scrollbar-width: none; }
 
 /* ─── Buttons ─── */
 .btn {
+  display: block;
   width: 100%;
   padding: 16px;
   border: none;
@@ -144,6 +145,8 @@ body { -ms-overflow-style: none; scrollbar-width: none; }
   font-weight: 600;
   font-family: inherit;
   cursor: pointer;
+  text-align: center;
+  text-decoration: none;
   transition: background 0.2s;
 }
 .btn-primary { background: #6C5CE7; color: #fff; }
