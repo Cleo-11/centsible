@@ -2,6 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import { useTransactions } from "@/context/TransactionsContext";
 
 const categoryOptions = [
   "Food & Dining",
@@ -12,15 +13,42 @@ const categoryOptions = [
   "Health & Fitness",
 ];
 
+const categoryMeta: Record<string, { icon: string; bg: string }> = {
+  "Food & Dining": { icon: "🍔", bg: "rgba(255,107,107,0.12)" },
+  Transport: { icon: "🚕", bg: "rgba(253,203,110,0.12)" },
+  Shopping: { icon: "🛒", bg: "rgba(108,92,231,0.12)" },
+  "Bills & Utilities": { icon: "📱", bg: "rgba(255,107,107,0.12)" },
+  Entertainment: { icon: "🎬", bg: "rgba(108,92,231,0.12)" },
+  "Health & Fitness": { icon: "🏋️", bg: "rgba(0,210,160,0.12)" },
+};
+
+function formatDate(dateStr: string) {
+  const d = new Date(dateStr + "T00:00:00");
+  return d.toLocaleDateString("en-IN", { month: "short", day: "numeric" });
+}
+
 export default function AddTransactionPage() {
   const router = useRouter();
-  const [amount, setAmount] = useState("750");
+  const { addTransaction } = useTransactions();
+  const [amount, setAmount] = useState("");
   const [category, setCategory] = useState("Shopping");
-  const [note, setNote] = useState("New headphones");
-  const [date, setDate] = useState("2026-04-08");
-  const [splitActive, setSplitActive] = useState(true);
+  const [note, setNote] = useState("");
+  const [date, setDate] = useState(new Date().toISOString().slice(0, 10));
+  const [splitActive, setSplitActive] = useState(false);
 
   const handleSave = () => {
+    const num = Number(amount);
+    if (!num || num <= 0 || !note.trim()) return;
+    const meta = categoryMeta[category] ?? { icon: "💳", bg: "rgba(108,92,231,0.12)" };
+    const shortCat = category.split(" ")[0];
+    addTransaction({
+      icon: meta.icon,
+      bg: meta.bg,
+      name: note.trim(),
+      detail: `${formatDate(date)} · ${shortCat}`,
+      amount: `-₹${num.toLocaleString("en-IN")}`,
+      type: "expense",
+    });
     router.push("/transactions");
   };
 

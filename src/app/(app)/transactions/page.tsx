@@ -2,21 +2,12 @@
 
 import Link from "next/link";
 import { useState } from "react";
+import { useTransactions } from "@/context/TransactionsContext";
 
 const categories = ["All", "Food", "Transport", "Shopping", "Bills"];
 
-const transactions = [
-  { icon: "🍔", bg: "rgba(255,107,107,0.12)", name: "Swiggy Order", detail: "Today, 8:32 PM · Food", amount: "-₹486", type: "expense" },
-  { icon: "💸", bg: "rgba(0,210,160,0.12)", name: "Freelance Payment", detail: "Today, 2:00 PM · Income", amount: "+₹12,000", type: "income" },
-  { icon: "🚕", bg: "rgba(253,203,110,0.12)", name: "Uber Ride", detail: "Yesterday · Transport", amount: "-₹234", type: "expense" },
-  { icon: "🛒", bg: "rgba(108,92,231,0.12)", name: "Amazon", detail: "Apr 5 · Shopping", amount: "-₹2,199", type: "expense" },
-  { icon: "📱", bg: "rgba(255,107,107,0.12)", name: "Jio Recharge", detail: "Apr 4 · Bills", amount: "-₹299", type: "expense" },
-  { icon: "💰", bg: "rgba(0,210,160,0.12)", name: "Salary Credit", detail: "Apr 1 · Income", amount: "+₹45,000", type: "income" },
-  { icon: "☕", bg: "rgba(253,203,110,0.12)", name: "Starbucks", detail: "Mar 31 · Food", amount: "-₹580", type: "expense" },
-  { icon: "🏋️", bg: "rgba(108,92,231,0.12)", name: "Gym Membership", detail: "Mar 30 · Health", amount: "-₹3,500", type: "expense" },
-];
-
 export default function TransactionsPage() {
+  const { transactions } = useTransactions();
   const [activeCategory, setActiveCategory] = useState("All");
 
   const filtered = activeCategory === "All"
