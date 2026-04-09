@@ -1,0 +1,216 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-accent: #6C5CE7;
+  --color-accent-dark: #5A4BD1;
+  --color-accent-light: #A29BFE;
+  --color-success: #00D2A0;
+  --color-danger: #FF6B6B;
+  --color-warning: #FDCB6E;
+  --color-dim: #8B8FA3;
+  --color-card: #1A1D27;
+  --color-card-hover: #222632;
+  --color-surface: #0F1117;
+  --font-sans: var(--font-dm-sans);
+  --font-heading: var(--font-playfair-display);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  background: #0F1117;
+  color: #F0F0F5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::-webkit-scrollbar { display: none; }
+body { -ms-overflow-style: none; scrollbar-width: none; }
+
+/* ─── Cards ─── */
+.card {
+  background: #1A1D27;
+  border-radius: 16px;
+  padding: 18px;
+  margin-bottom: 12px;
+  border: 1px solid rgba(255,255,255,0.06);
+  transition: background 0.2s;
+}
+.card:hover { background: #222632; }
+
+/* ─── Badges ─── */
+.badge {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 600;
+}
+.badge-green { background: rgba(0,210,160,0.15); color: #00D2A0; }
+.badge-red { background: rgba(255,107,107,0.15); color: #FF6B6B; }
+.badge-orange { background: rgba(253,203,110,0.15); color: #FDCB6E; }
+.badge-accent { background: rgba(108,92,231,0.15); color: #A29BFE; }
+
+/* ─── Typography ─── */
+.amount {
+  font-size: 34px;
+  font-weight: 700;
+  font-family: var(--font-heading), serif;
+}
+.section-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: #8B8FA3;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 12px;
+}
+
+/* ─── Progress ─── */
+.progress-bg {
+  height: 8px;
+  background: rgba(255,255,255,0.06);
+  border-radius: 4px;
+  overflow: hidden;
+  margin-top: 8px;
+}
+.progress-fill {
+  height: 100%;
+  border-radius: 4px;
+  transition: width 1s ease;
+}
+
+/* ─── Transaction Row ─── */
+.tx-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.tx-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  flex-shrink: 0;
+}
+.tx-info { flex: 1; }
+.tx-info p { font-size: 14px; font-weight: 500; }
+.tx-info span { font-size: 12px; color: #8B8FA3; }
+.tx-amount { font-size: 15px; font-weight: 600; text-align: right; }
+
+/* ─── Form ─── */
+.input-group { margin-bottom: 16px; }
+.input-group label {
+  display: block;
+  font-size: 12px;
+  color: #8B8FA3;
+  margin-bottom: 6px;
+  font-weight: 500;
+}
+.input-group input,
+.input-group select {
+  width: 100%;
+  padding: 14px 16px;
+  background: #1A1D27;
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 12px;
+  color: #F0F0F5;
+  font-size: 15px;
+  font-family: inherit;
+  outline: none;
+  transition: border-color 0.2s;
+}
+.input-group input:focus,
+.input-group select:focus {
+  border-color: #6C5CE7;
+}
+
+/* ─── Buttons ─── */
+.btn {
+  width: 100%;
+  padding: 16px;
+  border: none;
+  border-radius: 14px;
+  font-size: 15px;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.btn-primary { background: #6C5CE7; color: #fff; }
+.btn-primary:hover { background: #5A4BD1; }
+.btn-ghost {
+  background: transparent;
+  color: #A29BFE;
+  border: 1px solid #6C5CE7;
+}
+
+/* ─── Insight ─── */
+.insight {
+  background: linear-gradient(135deg, rgba(108,92,231,0.15), rgba(0,210,160,0.08));
+  border: 1px solid rgba(108,92,231,0.2);
+  border-radius: 16px;
+  padding: 16px;
+  margin-bottom: 12px;
+}
+.insight p { font-size: 13px; line-height: 1.5; }
+.insight .tag { font-size: 10px; color: #A29BFE; font-weight: 600; margin-bottom: 6px; }
+
+/* ─── Settings ─── */
+.setting-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.setting-row span { font-size: 14px; }
+
+/* ─── Pills ─── */
+.pill {
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 500;
+  background: #1A1D27;
+  border: 1px solid rgba(255,255,255,0.06);
+  color: #8B8FA3;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.pill-active {
+  background: #6C5CE7;
+  color: #fff;
+  border-color: #6C5CE7;
+}
+
+/* ─── Bar Chart ─── */
+.bar-chart {
+  display: flex;
+  align-items: flex-end;
+  gap: 8px;
+  height: 120px;
+  padding-top: 10px;
+}
+.bar-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+  gap: 4px;
+}
+.bar {
+  width: 100%;
+  border-radius: 6px 6px 0 0;
+  transition: height 0.8s ease;
+}
+.bar-label { font-size: 10px; color: #8B8FA3; }
